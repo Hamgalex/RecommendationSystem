@@ -2,13 +2,13 @@ import pickle
 import streamlit as st
 import requests
 
-st.header('Movie Recommender System')
+st.header('Recomendación de Películas')
 movies = pickle.load(open('data/database.pkl','rb'))
 similarity = pickle.load(open('data/similarity.pkl','rb'))
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(
-    "Type or select a movie from the dropdown",
+    "Selecciona tu película favorita:",
     movie_list
 )
 
@@ -36,7 +36,7 @@ def recommend(movie):
 
     return recommended_movie_names,recommended_movie_posters
 
-if st.button('Show Recommendation'):
+if st.button('Mostrar Recomendaciones'):
     recommended_movie_names,recommended_movie_posters = recommend(selected_movie)
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
